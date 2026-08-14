@@ -21,46 +21,13 @@ button{background:#111;color:#0f0;border:1px solid #333;padding:8px 16px;margin-
     <pre id="out">Bereit…</pre>
 </div>
 
-<script>
+<script type="module">
+import { C81 } from "./C81.js";
+
 function runC81(){
-
-    // -----------------------------
-    // C81 · RESPO · NC-FUSION
-    // -----------------------------
-
-    const C81 = {
-
-        core: "C81",
-        respo: "active",
-        state: "OK",
-
-        loops: [
-            "1.loop","2.loop","3.loop","4.loop",
-            "8.loop","9.loop"
-        ],
-
-        axes: [
-            "tmp.a","tmp.d","tmp.e","tmp.i",
-            "tmp.o","tmp.r","tmp.s","tmp.w"
-        ],
-
-        modules: [
-            "arg.tmp","in.tmp","fit.tmp",
-            "help.tmp","up.tmp"
-        ],
-
-        zone: "c.zone",
-        mode: "NC.mode",
-        u: "u.mode",
-
-        // C81 = 81.tmp + alle tmp + alle loops + alle modules
-        fusion: "RESPO-81-FUSION",
-
-        timestamp: Date.now()
-    };
-
+    const out = C81.init();
     document.getElementById("out").textContent =
-        JSON.stringify(C81, null, 2);
+        JSON.stringify(out, null, 2);
 }
 </script>
 
