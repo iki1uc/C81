@@ -1,33 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>81.tmp · NC-System</title>
+<title>C81 · RESPO · NC-System</title>
+
 <style>
 body{background:#000;color:#0f0;font-family:monospace;padding:40px;}
 pre{background:#111;border-left:3px solid #6cf;padding:12px;}
 button{background:#111;color:#0f0;border:1px solid #333;padding:8px 16px;margin-bottom:10px;}
+.block{margin-bottom:20px;}
 </style>
 </head>
+
 <body>
 
-<h1>81.tmp · NC-System</h1>
+<h1>C81 · RESPO · NC-System</h1>
 
-<button onclick="runNC()">NC prüfen</button>
-<pre id="out">Bereit…</pre>
+<div class="block">
+    <button onclick="runC81()">C81 prüfen</button>
+    <pre id="out">Bereit…</pre>
+</div>
 
 <script>
-function runNC(){
-    const nc = {
-        core: "NC",
-        state: "active",
-        loops: ["1.loop","2.loop","3.loop","4.loop","8.loop","9.loop"],
-        axes: ["tmp.a","tmp.d","tmp.e","tmp.i","tmp.o","tmp.r","tmp.s","tmp.w"],
-        modules: ["arg.tmp","in.tmp","fit.tmp","help.tmp","up.tmp"],
+function runC81(){
+
+    // -----------------------------
+    // C81 · RESPO · NC-FUSION
+    // -----------------------------
+
+    const C81 = {
+
+        core: "C81",
+        respo: "active",
+        state: "OK",
+
+        loops: [
+            "1.loop","2.loop","3.loop","4.loop",
+            "8.loop","9.loop"
+        ],
+
+        axes: [
+            "tmp.a","tmp.d","tmp.e","tmp.i",
+            "tmp.o","tmp.r","tmp.s","tmp.w"
+        ],
+
+        modules: [
+            "arg.tmp","in.tmp","fit.tmp",
+            "help.tmp","up.tmp"
+        ],
+
         zone: "c.zone",
+        mode: "NC.mode",
+        u: "u.mode",
+
+        // C81 = 81.tmp + alle tmp + alle loops + alle modules
+        fusion: "RESPO-81-FUSION",
+
         timestamp: Date.now()
     };
-    out.textContent = JSON.stringify(nc, null, 2);
+
+    document.getElementById("out").textContent =
+        JSON.stringify(C81, null, 2);
 }
 </script>
 
