@@ -10,7 +10,6 @@ export const C81 = {
       mode: "RESPO-KERNEL",
 
       // C81 ist NICHT 81.tmp
-      // C81 ist die finalisierte Form von RESPO-81
       origin: "81.tmp → RESPO → C81",
 
       // RESPO-Deckung
@@ -40,9 +39,7 @@ export const C81 = {
         fusion: "OS → SYNC → RESPO → C81"
       },
 
-      // C81 ist finalisiert
       final: true,
-
       timestamp: Date.now()
     };
   }
